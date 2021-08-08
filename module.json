@@ -1,9 +1,9 @@
 {
   "name": "Midi-SRD",
   "title": "Midi SRD",
-  "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects, MQoL and AT",
+  "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects and Midi QoL",
   "author": "Kandashi",
-  "version": "5.0.00",
+  "version": "0.1.00",
   "systems": [
     "dnd5e"
   ],
@@ -32,29 +32,32 @@
       "path": "packs/feats.db",
       "entity": "Item",
       "module": "Dynamic Effects Items"
-    },
-    {
-      "name": "MIDI SRD Midi-collection",
-      "label": "MIDI SRD Midi-collection",
-      "path": "packs/MidiItems.db",
-      "entity": "Item",
-      "module": "Dynamic Effects Items"
-    },
-    {
-      "name": "MIDI SRD Magic Items",
-      "label": "SRD Magic Items",
-      "path": "packs/MagicItems.db",
-      "entity": "Item",
-      "module": "Dynamic Effects Items"
     }
   ],
   "dependencies": [
     {
       "name": "dae",
       "manifest": "https://gitlab.com/tposney/MIDI/raw/master/package/module.json"
+    },
+    {
+      "name": "midi-qol",
+      "manifest": "https://gitlab.com/tposney/midi-qol/raw/master/package/module.json"
+    },
+    {
+      "name" :"advanced-macros",
+      "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-advanced-macros/releases/latest/download/module.json"
+    },
+    {
+      "name": "about-time",
+      "manifest": "https://gitlab.com/tposney/about-time/raw/master/package/module.json"
+    },
+    {
+      "name": "times-up",
+      "manifest": "https://gitlab.com/tposney/times-up/raw/master/package/module.json"
     }
+    
   ],
-  "url": "https://github.com/kandashi/Midi-SRD",
+  "url": "This is auto replaced",
   "manifest": "https://raw.githubusercontent.com/kandashi/Midi-SRD/master/module.json",
   "download": "https://github.com/kandashi/Midi-SRD/archive/master.zip"
 }
