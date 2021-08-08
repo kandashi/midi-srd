@@ -1,48 +1,60 @@
 {
-  "name": "module",
-  "title": "New Module",
-  "description": "",
-  "version": "This is auto replaced",
-  "library": "false",
-  "manifestPlusVersion": "1.0.0",
-  "minimumCoreVersion": "0.8.8",
-  "compatibleCoreVersion": "0.8.8",
-  "authors": [
+  "name": "Midi-SRD",
+  "title": "Midi SRD",
+  "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects, MQoL and AT",
+  "author": "Kandashi",
+  "version": "5.0.00",
+  "systems": [
+    "dnd5e"
+  ],
+  "minimumCoreVersion": "0.8.5",
+  "compatibleCoreVersion": "0.8.6",
+  "allowBugReporter": true,
+  "bugs": "https://github.com/kandashi/Midi-SRD/issues",
+  "packs": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "MIDI SRD Items",
+      "label": "MIDI SRD  Items",
+      "path": "packs/equipment.db",
+      "entity": "Item",
+      "module": "Dynamic Effects Items"
+    },
+    {
+      "name": "MIDI SRD Spells",
+      "label": "MIDI SRD Spells",
+      "path": "packs/spells.db",
+      "entity": "Item",
+      "module": "Dynamic Effects Items"
+    },
+    {
+      "name": "MIDI SRD Feats",
+      "label": "MIDI SRD Feats",
+      "path": "packs/feats.db",
+      "entity": "Item",
+      "module": "Dynamic Effects Items"
+    },
+    {
+      "name": "MIDI SRD Midi-collection",
+      "label": "MIDI SRD Midi-collection",
+      "path": "packs/MidiItems.db",
+      "entity": "Item",
+      "module": "Dynamic Effects Items"
+    },
+    {
+      "name": "MIDI SRD Magic Items",
+      "label": "SRD Magic Items",
+      "path": "packs/MagicItems.db",
+      "entity": "Item",
+      "module": "Dynamic Effects Items"
     }
   ],
   "dependencies": [
-
-  ],
-  "conflicts": [
-    
-  ],
-  "esmodules": [
-    "/scripts/module.js"
-  ],
-  "scripts": [
-    "/scripts/lib/lib.js"
-  ],
-  "styles": [
-    "/styles/module.css"
-  ],
-  "languages": [
     {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
+      "name": "dae",
+      "manifest": "https://gitlab.com/tposney/MIDI/raw/master/package/module.json"
     }
   ],
-  "url": "This is auto replaced",
-  "manifest": "This is auto replaced",
-  "download": "This is auto replaced",
-  "media": [
-    {
-      "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
-    }
-  ]
+  "url": "https://github.com/kandashi/Midi-SRD",
+  "manifest": "https://raw.githubusercontent.com/kandashi/Midi-SRD/master/module.json",
+  "download": "https://github.com/kandashi/Midi-SRD/archive/master.zip"
 }
