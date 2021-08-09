@@ -13,31 +13,38 @@
   "bugs": "https://github.com/kandashi/Midi-SRD/issues",
   "packs": [
     {
-      "name": "MIDI SRD Items",
-      "label": "MIDI SRD  Items",
+      "name": "Midi SRD Items",
+      "label": "Midi SRD  Items",
       "path": "packs/equipment.db",
       "entity": "Item",
-      "module": "Dynamic Effects Items"
+      "module": "Midi SRD"
     },
     {
-      "name": "MIDI SRD Spells",
-      "label": "MIDI SRD Spells",
+      "name": "Midi SRD Spells",
+      "label": "Midi SRD Spells",
       "path": "packs/spells.db",
       "entity": "Item",
       "module": "Dynamic Effects Items"
     },
     {
-      "name": "MIDI SRD Feats",
-      "label": "MIDI SRD Feats",
+      "name": "Midi SRD Feats",
+      "label": "Midi SRD Feats",
       "path": "packs/feats.db",
       "entity": "Item",
+      "module": "Dynamic Effects Items"
+    },
+    {
+      "name": "Midi SRD Macros",
+      "label": "Midi SRD Macros",
+      "path": "packs/Macros.db",
+      "entity": "Macro",
       "module": "Dynamic Effects Items"
     }
   ],
   "dependencies": [
     {
       "name": "dae",
-      "manifest": "https://gitlab.com/tposney/MIDI/raw/master/package/module.json"
+      "manifest": "https://gitlab.com/tposney/dae/raw/master/package/module.json"
     },
     {
       "name": "midi-qol",
