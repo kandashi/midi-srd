@@ -1,5 +1,5 @@
 {
-  "name": "Midi-SRD",
+  "name": "midi-srd",
   "title": "Midi SRD",
   "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects and Midi QoL",
   "author": "Kandashi",
@@ -10,7 +10,7 @@
   "minimumCoreVersion": "0.8.5",
   "compatibleCoreVersion": "0.8.6",
   "allowBugReporter": true,
-  "bugs": "https://github.com/kandashi/Midi-SRD/issues",
+  "bugs": "https://github.com/kandashi/midi-srd/issues",
   "packs": [
     {
       "name": "Midi SRD Items",
@@ -24,21 +24,21 @@
       "label": "Midi SRD Spells",
       "path": "packs/spells.db",
       "entity": "Item",
-      "module": "Dynamic Effects Items"
+      "module": "Midi SRD"
     },
     {
       "name": "Midi SRD Feats",
       "label": "Midi SRD Feats",
       "path": "packs/feats.db",
       "entity": "Item",
-      "module": "Dynamic Effects Items"
+      "module": "Midi SRD"
     },
     {
       "name": "Midi SRD Macros",
       "label": "Midi SRD Macros",
       "path": "packs/Macros.db",
       "entity": "Macro",
-      "module": "Dynamic Effects Items"
+      "module": "Midi SRD"
     }
   ],
   "dependencies": [
@@ -65,6 +65,6 @@
     
   ],
   "url": "This is auto replaced",
-  "manifest": "https://raw.githubusercontent.com/kandashi/Midi-SRD/master/module.json",
-  "download": "https://github.com/kandashi/Midi-SRD/archive/master.zip"
+  "manifest": "https://raw.githubusercontent.com/kandashi/midi-srd/master/module.json",
+  "download": "https://github.com/kandashi/midi-srd/archive/master.zip"
 }
