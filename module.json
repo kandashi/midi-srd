@@ -55,8 +55,8 @@
       "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-advanced-macros/releases/latest/download/module.json"
     },
     {
-      "name": "about-time",
-      "manifest": "https://gitlab.com/tposney/about-time/raw/master/package/module.json"
+      "name": "foundryvtt-simple-calendar",
+      "manifest": "https://github.com/vigoren/foundryvtt-simple-calendar/releases/latest/download/module.json"
     },
     {
       "name": "times-up",
