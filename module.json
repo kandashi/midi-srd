@@ -7,10 +7,10 @@
   "systems": [
     "dnd5e"
   ],
-  "scripts" : "scripts/MidiSRD-macros.js",
-  "styles" : "scripts/midiSRD-styles.css",
-  "minimumCoreVersion": "0.8.5",
-  "compatibleCoreVersion": "0.8.6",
+  "scripts" : ["scripts/MidiSRD-macros.js"],
+  "styles" : ["scripts/midiSRD-styles.css"],
+  "minimumCoreVersion": "9",
+  "compatibleCoreVersion": "9",
   "allowBugReporter": true,
   "bugs": "https://github.com/kandashi/midi-srd/issues",
   "packs": [

@@ -110,8 +110,8 @@ class MidiMacros {
     static async aid(args) {
         const { actor, token, lArgs } = MidiMacros.targets(args)
         let buf = (parseInt(args[1]) - 1) * 5;
-        let curHP = tactor.data.data.attributes.hp.value;
-        let curMax = tactor.data.data.attributes.hp.max;
+        let curHP = actor.data.data.attributes.hp.value;
+        let curMax = actor.data.data.attributes.hp.max;
 
         if (args[0] === "on") {
             await actor.update({ "data.attributes.hp.value": curHP + buf })
@@ -284,7 +284,7 @@ class MidiMacros {
                 direction: 0,
                 distance: 60,
                 borderColor: "#FF0000",
-                flags: { DAESRD: { ArcaneSwordRange: { ActorId: actor.id } } }
+                flags: { "midi-srd": { ArcaneSwordRange: { ActorId: actor.id } } }
                 //fillColor: "#FF3366",
             }]);
             range.then(result => {
@@ -296,7 +296,7 @@ class MidiMacros {
                     texture: texture || "",
                     x: 0,
                     y: 0,
-                    flags: { DAESRD: { ArcaneSword: { ActorId: actor.id } } },
+                    flags: { "midi-srd": { ArcaneSword: { ActorId: actor.id } } },
                     fillColor: game.user.color
                 }
                 Hooks.once("createMeasuredTemplate", deleteTemplates);
@@ -367,7 +367,7 @@ class MidiMacros {
 
         if (args[0] === "on") {
             await token.document.update({ hidden: true }); // hide targeted token
-            await ChatMessage.create({ content: target.name + "  was banished" });
+            await ChatMessage.create({ content: token.name + "  was banished" });
         }
         if (args[0] === "off") {
             await token.document.update({ hidden: false }); // unhide token
@@ -429,12 +429,12 @@ class MidiMacros {
                 x: 0,
                 y: 0,
                 texture: texture || "",
-                flags: { DAESRD: { CallLighting: { ActorId: tactor.id } } },
+                flags: { "midi-srd": { CallLighting: { ActorId: actor.id } } },
                 fillColor: game.user.color
             }
             MidiMacros.templateCreation(templateData, actor)
 
-            await tactor.createEmbeddedDocuments("Item",
+            await actor.createEmbeddedDocuments("Item",
                 [{
                     "name": "Call Lightning - bolt",
                     "type": "spell",
@@ -479,7 +479,7 @@ class MidiMacros {
                             "formula": ""
                         },
                     },
-                    "flags": { "midi-srd": { "CallLighting": { "ActorId": tactor.id } } },
+                    "flags": { "midi-srd": { "CallLighting": { "ActorId": tacactortor.id } } },
                     "img": "systems/dnd5e/icons/spells/lighting-sky-2.jpg",
                     "effects": []
                 }]
@@ -830,7 +830,7 @@ class MidiMacros {
                 x: 0,
                 y: 0,
                 fillColor: game.user.color,
-                flags: { DAESRD: { Darkness: { ActorId: actor.id } } }
+                flags: { "midi-srd": { Darkness: { ActorId: actor.id } } }
             };
 
             Hooks.once("createMeasuredTemplate", async (template) => {
@@ -860,7 +860,7 @@ class MidiMacros {
                         dir: CONST.WALL_DIRECTIONS.BOTH,
                         door: CONST.WALL_DOOR_TYPES.NONE,
                         ds: CONST.WALL_DOOR_STATES.CLOSED,
-                        flags: { DAESRD: { Darkness: { ActorId: actor.id } } }
+                        flags: { "midi-srd": { Darkness: { ActorId: actor.id } } }
                     });
                 }
                 await canvas.scene.createEmbeddedDocuments("Wall", data)
@@ -962,10 +962,10 @@ class MidiMacros {
                         label: "Cat's Grace",
                         callback: async () => {
                             await ChatMessage.create({ content: `${actor.name} doesn't take damage from falling 20 feet or less if it isn't incapacitated.` });
-                            await DAE.setFlag(tactor, 'enhanceAbility', {
+                            await DAE.setFlag(actor, 'enhanceAbility', {
                                 name: "cat",
                             });
-                            let effect = tactor.effects.find(i => i.data.label === "Enhance Ability");
+                            let effect = actor.effects.find(i => i.data.label === "Enhance Ability");
                             let changes = effect.data.changes;
                             changes[1] = {
                                 key: "flags.midi-qol.advantage.ability.check.dex",
@@ -979,8 +979,8 @@ class MidiMacros {
                     four: {
                         label: "Eagle's Splendor",
                         callback: async () => {
-                            await ChatMessage.create({ content: `${tactor.name} has advantage on Charisma checks` });
-                            await DAE.setFlag(tactor, 'enhanceAbility', {
+                            await ChatMessage.create({ content: `${actor.name} has advantage on Charisma checks` });
+                            await DAE.setFlag(actor, 'enhanceAbility', {
                                 name: "eagle",
                             });
                             let effect = actor.effects.find(i => i.data.label === "Enhance Ability");
@@ -1156,7 +1156,7 @@ class MidiMacros {
 
         if (args[0] === "on") {
             EyebiteDialog();
-            await ChatMessage.create({ content: `${target.name} is blessed with Eyebite` });
+            await ChatMessage.create({ content: `${actor.name} is blessed with Eyebite` });
         }
         //Cleanup hooks and flags.
         if (args[0] === "each") {
@@ -1314,15 +1314,15 @@ class MidiMacros {
             }).render(true);
         }
         if (args[0] === "off") {
-            let item = tactor.items.getName("Summoned Fire Shield")
-            let element = DAE.getFlag(tactor, 'FireShield');
-            let resistances = tactor.data.data.traits.dr.value;
+            let item = actor.items.getName("Summoned Fire Shield")
+            let element = DAE.getFlag(actor, 'FireShield');
+            let resistances = actor.data.data.traits.dr.value;
             const index = resistances.indexOf(element);
             resistances.splice(index, 1);
-            await tactor.update({ "data.traits.dr.value": resistances });
-            await ChatMessage.create({ content: "Fire Shield expires on " + target.name });
-            await DAE.unsetFlag(tactor, 'FireShield');
-            await tactor.deleteEmbeddedDocuments("Item", [item.id])
+            await actor.update({ "data.traits.dr.value": resistances });
+            await ChatMessage.create({ content: "Fire Shield expires on " + actor.name });
+            await DAE.unsetFlag(actor, 'FireShield');
+            await actor.deleteEmbeddedDocuments("Item", [item.id])
 
         }
     }
@@ -1396,7 +1396,7 @@ class MidiMacros {
 
         if (args[0] === "on") {
             await MidiMacros.addDfred("Restrained", actor)
-            await DAE.setFlag(tactor, "FleshToStoneSpell", {
+            await DAE.setFlag(actor, "FleshToStoneSpell", {
                 successes: 0,
                 failures: 1
             });
@@ -1693,7 +1693,7 @@ class MidiMacros {
                             let bonus = value_limit(spellLevel, 1, 3);
                             let wpDamage = copy_item.data.damage.parts[0][0];
                             let verDamage = copy_item.data.damage.versatile;
-                            await DAE.setFlag(tactor, `magicWeapon`, {
+                            await DAE.setFlag(actor, `magicWeapon`, {
                                 damage: weaponItem.data.data.attackBonus,
                                 weapon: itemId,
                                 weaponDmg: wpDamage,
@@ -1744,7 +1744,7 @@ class MidiMacros {
                 direction: 0,
                 distance: 30,
                 borderColor: "#FF0000",
-                flags: { DAESRD: { MistyStep: { ActorId: actor.id } } }
+                flags: { "midi-srd": { MistyStep: { ActorId: actor.id } } }
             }]);
             range.then(result => {
                 let templateData = {
@@ -1755,7 +1755,7 @@ class MidiMacros {
                     x: 0,
                     y: 0,
                     fillColor: game.user.color,
-                    flags: { DAESRD: { MistyStep: { ActorId: actor.id } } }
+                    flags: { "midi-srd": { MistyStep: { ActorId: actor.id } } }
                 };
                 Hooks.once("createMeasuredTemplate", deleteTemplatesAndMove);
                 MidiMacros.templateCreation(templateData, actor)
@@ -1785,7 +1785,7 @@ class MidiMacros {
                 direction: 0,
                 distance: 60,
                 borderColor: "#517bc9",
-                flags: { DAESRD: { MoonbeamRange: { ActorId: actor.id } } }
+                flags: { "midi-srd": { MoonbeamRange: { ActorId: actor.id } } }
             }]);
             range.then(result => {
                 let templateData = {
@@ -1796,7 +1796,7 @@ class MidiMacros {
                     x: 0,
                     y: 0,
                     flags: {
-                        DAESRD: { Moonbeam: { ActorId: actor.id } }
+                        "midi-srd": { Moonbeam: { ActorId: actor.id } }
                     },
                     fillColor: game.user.color
                 }
@@ -1833,7 +1833,7 @@ class MidiMacros {
                         },
 
                     },
-                    "flags": { "midi-srd": { "Moonbeam": { "ActorId": tactor.id } } },
+                    "flags": { "midi-srd": { "Moonbeam": { "ActorId": actor.id } } },
                     "img": DAEItem.img,
                     "effects": []
                 }]
@@ -2066,14 +2066,14 @@ class MidiMacros {
         }
 
         if (args[0] === "off") {
-            const flag = DAE.getFlag(target, "shillelagh");
-            const weaponItem = target.getEmbeddedDocument("Item", flag.id);
+            const flag = DAE.getFlag(actor, "shillelagh");
+            const weaponItem = actor.getEmbeddedDocument("Item", flag.id);
             const weaponCopy = duplicate(weaponItem);
             weaponCopy.data.damage.parts[0][0] = flag.damage;
             weaponCopy.data.ability = flag.ability;
             weaponCopy.name = flag.name;
             setProperty(weaponCopy, "data.properties.mgc", flag.magical);
-            await target.updateEmbeddedDocuments("Item", [weaponCopy]);
+            await actor.updateEmbeddedDocuments("Item", [weaponCopy]);
             await DAE.unsetFlag(target, "shillelagh");
             await ChatMessage.create({ content: weaponCopy.name + " returns to normal" });
         }
@@ -2088,12 +2088,12 @@ class MidiMacros {
             let range = canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [{
                 t: "circle",
                 user: game.user._id,
-                x: target.x + canvas.grid.size / 2,
-                y: target.y + canvas.grid.size / 2,
+                x: token.x + canvas.grid.size / 2,
+                y: token.y + canvas.grid.size / 2,
                 direction: 0,
                 distance: 60,
                 borderColor: "#FF0000",
-                flags: { DAESRD: { SpiritualWeaponRange: { ActorId: actor.id } } }
+                flags: { "midi-srd": { SpiritualWeaponRange: { ActorId: actor.id } } }
             }]);
             range.then(result => {
                 let templateData = {
@@ -2104,7 +2104,7 @@ class MidiMacros {
                     texture: texture || "",
                     x: 0,
                     y: 0,
-                    flags: { DAESRD: { SpiritualWeapon: { ActorId: actor.id } } },
+                    flags: { "midi-srd": { SpiritualWeapon: { ActorId: actor.id } } },
                     fillColor: game.user.color
                 }
                 Hooks.once("createMeasuredTemplate", MidiMacros.deleteTemplates("SpiritualWeaponRange", actor));
@@ -2210,7 +2210,7 @@ class MidiMacros {
 
         if (args[0] === "off") {
             RemoveHook()
-            await DAE.unsetFlag(tactor, "WardingBondIds");
+            await DAE.unsetFlag(actor, "WardingBondIds");
             console.log("Death Ward removed");
         }
 
