@@ -3,10 +3,12 @@
   "title": "Midi SRD",
   "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects and Midi QoL",
   "author": "Kandashi",
-  "version": "0.1.00",
+  "version": "0.2.00",
   "systems": [
     "dnd5e"
   ],
+  "scripts" : "MidiSRD-macros.js",
+  "styles" : "midiSRD-styles.css",
   "minimumCoreVersion": "0.8.5",
   "compatibleCoreVersion": "0.8.6",
   "allowBugReporter": true,
