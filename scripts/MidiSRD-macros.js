@@ -68,6 +68,30 @@ class MidiMacros {
         await game.dfreds.effectInterface.removeEffect({ effectName: name, uuid: actor.uuid })
     }
 
+    /**
+     * 
+     * @param {Token} token Token to move
+     * @param {Number} maxRange Range in ft
+     * @param {String} name Name of the Effect
+     * @param {Boolean} animate Animate move, default false
+     */
+    static async moveToken(token, maxRange, name, animate = false){
+        let snap = token.data.width/2 === 0 ? 1 : -1
+        let {x, y} = await this.warpgateCrosshairs(token, maxRange, name, token.data.img, token.data, snap)
+        let pos = canvas.grid.getSnappedPosition(x-5, y-5, 1)
+        await token.document.update(pos, {animate : animate})
+    }
+
+    /**
+     * 
+     * @param {Token} source Source of range distance (usually)
+     * @param {Number} maxRange range of crosshairs
+     * @param {String} name Name to use
+     * @param {String} icon Crosshairs Icon
+     * @param {Object} tokenData {height; width} 
+     * @param {Number} snap snap position, 2: half grid intersections, 1: on grid intersections, 0: no snap, -1: grid centers, -2: half grid centers
+     * @returns 
+     */
     static async warpgateCrosshairs(source, maxRange, name, icon, tokenData, snap) {
         const sourceCenter = source.center;
         let cachedDistance = 0;
@@ -479,7 +503,7 @@ class MidiMacros {
                             "formula": ""
                         },
                     },
-                    "flags": { "midi-srd": { "CallLighting": { "ActorId": tacactortor.id } } },
+                    "flags": { "midi-srd": { "CallLighting": { "ActorId": actor.id } } },
                     "img": "systems/dnd5e/icons/spells/lighting-sky-2.jpg",
                     "effects": []
                 }]
@@ -575,7 +599,7 @@ class MidiMacros {
                 }
             }
             else if (saveRoll >= dc) {
-                await actor.deleteEmbeddedDocuments("ActiveEffect", [lastArg.effectId]);
+                await actor.deleteEmbeddedDocuments("ActiveEffect", [lArgs.effectId]);
             }
         }
 
@@ -1616,7 +1640,7 @@ class MidiMacros {
                             let saveRoll = (await actor.rollAbilitySave(saveData.ability, { flavor })).total;
 
                             if (saveRoll >= DC) {
-                                await actor.deleteEmbeddedDocuments("ActiveEffect", [lastArg.effectId]);
+                                await actor.deleteEmbeddedDocuments("ActiveEffect", [lArgs.effectId]);
                             }
                             if (saveRoll < DC) {
                                 await ChatMessage.create({ content: `${actor.name} fails the save` });
@@ -1761,8 +1785,8 @@ class MidiMacros {
                 MidiMacros.templateCreation(templateData, actor)
                 async function deleteTemplatesAndMove(template) {
                     MidiMacros.deleteTemplates("MistyStep", actor)
-                    await token.update({ x: template.data.x, y: template.data.y }, { animate: false })
-                    await actor.deleteEmbeddedDocuments("ActiveEffect", [lastArg.effectId]);
+                    await token.document.update({ x: template.data.x, y: template.data.y }, { animate: false })
+                    await actor.deleteEmbeddedDocuments("ActiveEffect", [lArgs.effectId]);
                 };
             });
         }
@@ -2140,7 +2164,7 @@ class MidiMacros {
                         "weaponType": "simpleM",
                         "proficient": true
                     },
-                    "flags": { "midi-srd": { "SpiritualWeapon": actor.actor.id } },
+                    "flags": { "midi-srd": { "SpiritualWeapon": actor.id } },
                     "img": `${image}`,
                     "effects": []
                 }],
