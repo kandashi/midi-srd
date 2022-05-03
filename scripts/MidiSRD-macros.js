@@ -302,7 +302,7 @@ class MidiMacros {
             let image = DAEitem.img;
             let range = canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [{
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 x: casterToken.x + canvas.grid.size / 2,
                 y: casterToken.y + canvas.grid.size / 2,
                 direction: 0,
@@ -447,7 +447,7 @@ class MidiMacros {
         if (args[0] === "on") {
             let templateData = {
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 distance: 60,
                 direction: 0,
                 x: 0,
@@ -848,7 +848,7 @@ class MidiMacros {
         if (args[0] === "on") {
             let templateData = {
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 distance: 15,
                 direction: 0,
                 x: 0,
@@ -1762,7 +1762,7 @@ class MidiMacros {
         if (args[0] === "on") {
             let range = canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [{
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 x: token.x + canvas.grid.size / 2,
                 y: token.y + canvas.grid.size / 2,
                 direction: 0,
@@ -1773,7 +1773,7 @@ class MidiMacros {
             range.then(result => {
                 let templateData = {
                     t: "rect",
-                    user: game.user._id,
+                    user: game.user.id,
                     distance: 7.5,
                     direction: 45,
                     x: 0,
@@ -1803,7 +1803,7 @@ class MidiMacros {
         if (args[0] === "on") {
             let range = canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [{
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 x: token.x + canvas.grid.size / 2,
                 y: token.y + canvas.grid.size / 2,
                 direction: 0,
@@ -1814,7 +1814,7 @@ class MidiMacros {
             range.then(result => {
                 let templateData = {
                     t: "circle",
-                    user: game.user._id,
+                    user: game.user.id,
                     distance: 5,
                     direction: 0,
                     x: 0,
@@ -2111,7 +2111,7 @@ class MidiMacros {
             let image = castingItem.img;
             let range = canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [{
                 t: "circle",
-                user: game.user._id,
+                user: game.user.id,
                 x: token.x + canvas.grid.size / 2,
                 y: token.y + canvas.grid.size / 2,
                 direction: 0,
@@ -2122,7 +2122,7 @@ class MidiMacros {
             range.then(result => {
                 let templateData = {
                     t: "rect",
-                    user: game.user._id,
+                    user: game.user.id,
                     distance: 7,
                     direction: 45,
                     texture: texture || "",
