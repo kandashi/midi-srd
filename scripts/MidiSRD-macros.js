@@ -47,7 +47,7 @@ class MidiMacros {
     static async deleteItems(flagName, actor) {
         let items = actor.items.filter(i => i.data.flags["midi-srd"]?.[flagName] === actor.id)
         let itemArray = items.map(function (w) { return w.data._id })
-        if (itemArray.length > 0) await actor.deleteEmbeddedDocuments("Item", [itemArray]);
+        if (itemArray.length > 0) await actor.deleteEmbeddedDocuments("Item", itemArray);
     }
 
     /**
