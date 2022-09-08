@@ -190,7 +190,7 @@ class MidiMacros {
         if (!game.modules.get("warpgate")?.active) ui.notifications.error("Please enable the Warp Gate module")
         const { actor, token, lArgs } = MidiMacros.targets(args)
         if (!game.actors.getName("MidiSRD")) { await Actor.create({ name: "MidiSRD", type: "npc" }) }
-        let cycles = 1 + (lArgs.powerLevel - 3) * 2
+        let cycles = 1 + (lArgs.spellLevel - 3) * 2
         const buttonData = {
             buttons: [{
                 label: 'Zombie',
