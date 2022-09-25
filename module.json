@@ -8,7 +8,7 @@
     "dnd5e"
   ],
   "scripts" : ["scripts/MidiSRD-macros.js"],
-  "styles" : ["scripts/midiSRD-styles.css"],
+  "style" : ["scripts/midiSRD-style.css"],
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "allowBugReporter": true,
