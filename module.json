@@ -1,72 +1,91 @@
 {
-  "name": "midi-srd",
-  "title": "Midi SRD",
-  "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects and Midi QoL",
-  "author": "Kandashi",
-  "version": "0.2.00",
-  "systems": [
-    "dnd5e"
-  ],
-  "scripts" : ["scripts/MidiSRD-macros.js"],
-  "styles" : ["scripts/midiSRD-styles.css"],
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
-  "allowBugReporter": true,
-  "bugs": "https://github.com/kandashi/midi-srd/issues",
-  "packs": [
-    {
-      "name": "Midi SRD Items",
-      "label": "Midi SRD  Items",
-      "path": "packs/equipment.db",
-      "entity": "Item",
-      "module": "Midi SRD"
-    },
-    {
-      "name": "Midi SRD Spells",
-      "label": "Midi SRD Spells",
-      "path": "packs/spells.db",
-      "entity": "Item",
-      "module": "Midi SRD"
-    },
-    {
-      "name": "Midi SRD Feats",
-      "label": "Midi SRD Feats",
-      "path": "packs/feats.db",
-      "entity": "Item",
-      "module": "Midi SRD"
-    },
-    {
-      "name": "Midi SRD Macros",
-      "label": "Midi SRD Macros",
-      "path": "packs/Macros.db",
-      "entity": "Macro",
-      "module": "Midi SRD"
-    }
-  ],
-  "dependencies": [
-    {
-      "name": "dae",
-      "manifest": "https://gitlab.com/tposney/dae/raw/master/package/module.json"
-    },
-    {
-      "name": "midi-qol",
-      "manifest": "https://gitlab.com/tposney/midi-qol/raw/master/package/module.json"
-    },
-    {
-      "name" :"advanced-macros",
-      "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-advanced-macros/releases/latest/download/module.json"
-    },
-    {
-      "name": "foundryvtt-simple-calendar",
-      "manifest": "https://github.com/vigoren/foundryvtt-simple-calendar/releases/latest/download/module.json"
-    },
-    {
-      "name": "times-up",
-      "manifest": "https://gitlab.com/tposney/times-up/raw/master/package/module.json"
-    }
-    
-  ],
-  "url": "This is auto replaced",
-  "manifest": "https://raw.githubusercontent.com/kandashi/midi-srd/master/module.json",
-  "download": "https://github.com/kandashi/midi-srd/archive/master.zip"
+    "id": "midi-srd",
+    "title": "Midi SRD",
+    "description": "DnD 5e SRD items, features and spells configured for Dynamic Active Effects and Midi QoL",
+    "authors":  [
+		{
+			"name": "Kandashi"
+		}
+	],
+    "version": "0.2.03",
+    "scripts": [
+        "scripts/MidiSRD-macros.js"
+    ],
+    "styles": [
+        "scripts/midiSRD-style.css"
+    ],
+    "compatibility": {
+		"minimum": 9,
+		"verified": 9,
+		"maximum": 10
+	},
+    "allowBugReporter": true,
+    "bugs": "https://github.com/kandashi/midi-srd/issues",
+    "packs": [
+        {
+            "name": "Midi SRD Items",
+            "label": "Midi SRD  Items",
+            "path": "packs/equipment.db",
+            "type": "Item",
+            "module": "Midi SRD"
+        },
+        {
+            "name": "Midi SRD Spells",
+            "label": "Midi SRD Spells",
+            "path": "packs/spells.db",
+            "type": "Item",
+            "module": "Midi SRD"
+        },
+        {
+            "name": "Midi SRD Feats",
+            "label": "Midi SRD Feats",
+            "path": "packs/feats.db",
+            "type": "Item",
+            "module": "Midi SRD"
+        },
+        {
+            "name": "Midi SRD Macros",
+            "label": "Midi SRD Macros",
+            "path": "packs/Macros.db",
+            "type": "Macro",
+            "module": "Midi SRD"
+        }
+    ],
+    "relationships": {
+		"systems": [
+			{
+				"id": "dnd5e",
+				"type": "system",
+				"compatibility": {
+					"minimum": "2.0.1",
+					"compatible": "2.0.1"
+				}
+			}
+		],
+		"requires": [
+			{
+				"id": "dae",
+				"manifest": "https://gitlab.com/tposney/dae/raw/master/package/module.json"
+			},
+			{
+				"id": "midi-qol",
+				"manifest": "https://gitlab.com/tposney/midi-qol/raw/master/package/module.json"
+			},
+			{
+				"id": "advanced-macros",
+				"manifest": "https://github.com/League-of-Foundry-Developers/fvtt-advanced-macros/releases/latest/download/module.json"
+			},
+			{
+				"id": "foundryvtt-simple-calendar",
+				"manifest": "https://github.com/vigoren/foundryvtt-simple-calendar/releases/latest/download/module.json"
+			},
+			{
+				"id": "times-up",
+				"manifest": "https://gitlab.com/tposney/times-up/raw/master/package/module.json"
+			}
+		]
+	},
+    "url": "https://github.com/panoptical/midi-srd",
+    "manifest": "https://github.com/panoptical/midi-srd/releases/latest/download/module.json",
+    "download": "https://github.com/panoptical/midi-srd/releases/download/0.2.03/module.zip"
 }
